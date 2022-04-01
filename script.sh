@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eou pipefail 
+set -eo pipefail 
 
 REPONAME="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 2)" 
 OWNER="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 1)" 
