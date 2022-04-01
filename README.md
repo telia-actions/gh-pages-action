@@ -59,7 +59,8 @@ jobs:
       run: |
         npm cache verify
         npm install
-        npm run build 
+        npm run build
+        
     - name: Deploy to GitHub Pages
       uses: telia-actions/gh-pages-action@v1
       env:
