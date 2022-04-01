@@ -6,6 +6,8 @@ GitHub Action to deploy a static site on GitHub Pages
 
 Create a workflow `.yml` file in your repositories `.github/workflows` directory. An [example workflow](#example-workflow) is available below (under the "Example workflow" section). For more information, reference the GitHub Help Documentation for [Creating a workflow file](https://help.github.com/en/articles/configuring-a-workflow#creating-a-workflow-file).
 
+Action uses `${{ secrets.GITHUB_TOKEN }}`, to get more information about token, check [official documentation](https://docs.github.com/en/actions/security-guides/automatic-token-authentication) 
+
 ### Inputs
 
 | Input | Description | Required | Example values |
@@ -21,7 +23,7 @@ Create a workflow `.yml` file in your repositories `.github/workflows` directory
 ### Simple usage
 
 ```yaml
-        uses: telia-actions/github-pages-action@v1
+        uses: telia-actions/gh-pages-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -59,7 +61,7 @@ jobs:
         npm install
         npm run build 
     - name: Deploy to GitHub Pages
-      uses: telia-actions/github-pages-action@v1
+      uses: telia-actions/gh-pages-action@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
