@@ -1,0 +1,37 @@
+name: 'GitHub Pages Action'
+description: 'Action to deploy static pages on GitHub Pages'
+
+inputs: 
+  email:
+    description: 'Users email address'
+    required: true
+  build_dir:
+    description: 'Path to the place where all static files located'
+    required: false
+    default: '_site'
+  branch:
+    description: 'Branch where files will be pushed'
+    required: false
+  cname:
+    description: 'The custom domain name'
+    required: false
+  commit_message:
+    description: 'Custom commit message'
+    required: false
+  jekyll:
+    description: 'An option to use if Jekyll applied'
+    required: false
+    default: 'no'
+
+runs:
+  using: "composite"
+  steps:
+   - run: sudo su - root; ${{ github.action_path }}/script.sh
+     shell: bash
+     env:
+        INPUT_EMAIL: ${{ inputs.email }}
+        INPUT_BUILD_DIR: ${{ inputs.build_dir }}
+        INPUT_CNAME: ${{ inputs.cname }}
+        INPUT_JEKYLL: ${{ inputs.jekyll }}
+
+
